@@ -1,0 +1,56 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
+.example-card {
+    max-width: 1900px;
+  }
+
+  .avatar{
+
+    background-image: url('https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png');
+    background-size: cover;
+  }
+
+  p button{
+    margin: 10px;
+    background-color: #001f3f;
+    color: white;
+    
+    height: 40px;
+    border: 2px solid black ;
+  }
+
+
+  .center {
+    margin: auto;
+    width: 100%;
+    border: 3px solid snow;
+    padding: 10px;
+  }
+
+  .blog {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .colored{
+
+    background-color: #16222A;
+  }
+
+  .mybutton{
+    padding-left: 20px;
+  }
+
+  button:hover{
+    transform: scale(1.05);
+  }
+
+  button:focus{
+    background-repeat: repeat;
+  }
+
+  .card{
+    border: 4px solid #001f3f;
+    border-radius: 0px 25px 0px 25px;
+  }

@@ -1,0 +1,14 @@
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
+
+mat-form-field {
+    width: 80%;
+}
+
+.mat-raised-button {
+    background-color: #001F3F;
+    color: white;
+}
+
+.mat-button {
+    color: #001F3F;
+}

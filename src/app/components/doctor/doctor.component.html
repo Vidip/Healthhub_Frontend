@@ -1,0 +1,92 @@
+<!-- /* @author Avinash Gazula <agazula@dal.ca> */ -->
+<!-- /* @author Rudra Makwana <rd851601@dal.ca> */ -->
+
+<body fxLayoutAlign="center" fxLayout="column">
+
+    <form [formGroup]="searchForm" class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row"
+        fxLayout.lt-md="column" fxLayoutGap="4%">
+        <mat-form-field style="width: fit-content;">
+            <mat-label>Filter</mat-label>
+            <span matPrefix style="margin-right: 8px;">
+                <mat-icon>filter_list</mat-icon>
+            </span>
+            <mat-select [(value)]="selected" disableOptionCentering #filterField>
+                <mat-option *ngFor="let value of filterValues" [value]="value">{{value}}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input required formControlName="search" matInput placeholder="Ex. Dr.Simon" #searchField>
+            <mat-error *ngIf="search.invalid">Enter a keyword</mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button (click)="onSearch(filterField.value, searchField.value)">
+            Search
+        </button>
+
+    </form>
+
+    <div class="type-container" fxLayout="column">
+        <div fxLayout="row">
+            <h3>All Doctors</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultsAll" (click)="click(data)"
+                class="example-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{data.image_url}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div class="type-container" fxLayout="column">
+        <div fxLayout="row">
+            <h3>General Physicians</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultPhysician" (click)="click(data)"
+                class="example-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{data.image_url}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div class="type-container" fxLayout="column">
+        <div fxLayout="row">
+            <h3>Surgeon</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultSurgeons" (click)="click(data)"
+                class="example-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{data.image_url}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+
+</body>

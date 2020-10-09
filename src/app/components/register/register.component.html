@@ -1,0 +1,70 @@
+<!--  @author Avinash Gazula <agazula@dal.ca>  -->
+
+<button mat-icon-button tabindex="-1" class="close-button" [routerLink]="['/']" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+</button>
+<div class="parent">
+    <div class="container">
+        <div class="register">
+            <h3>Create a new Account</h3>
+            <mat-card-actions style="display: flex; flex-direction: row;">
+                <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
+                    Consumers</button>
+                <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
+                    Doctors</button>
+            </mat-card-actions>
+            <form [formGroup]="registerForm">
+
+                <mat-form-field class="first" appearance="standard">
+                    <mat-label>Enter your name</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="name.invalid">Name is required
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                    <mat-error *ngIf="registrationErrorMessage || email.invalid">
+                        {{ getEmailError() }}
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-hint align="end">Min Length 8. At least 1 Uppercase, Lowercase and Number</mat-hint>
+                        <mat-error *ngIf="password.invalid">{{getPasswordError()}}
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Confirm Password</mat-label>
+                        <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="confirmPassword.invalid">
+                            {{getConfirmPasswordError()}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <br>
+                <mat-card-actions>
+
+                    <button (click)="register()" mat-raised-button type="submit" color="primary">REGISTER</button>
+                    <br>
+                    <br>
+                    <button (click)="openLoginPage()" class="link" mat-button color="primary">Have an account? Login
+                        Here</button>
+                </mat-card-actions>
+            </form>
+
+        </div>
+    </div>
+</div>
